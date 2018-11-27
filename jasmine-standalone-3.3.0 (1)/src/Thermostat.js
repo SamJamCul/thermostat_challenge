@@ -1,6 +1,7 @@
 function Thermostat() {
 	this.current_temp = 20;
 	this.power_saving_mode = true;
+	this.energy_usage = "Black";
 };
 
 Thermostat.prototype.increase_temp = function() {
@@ -21,5 +22,24 @@ Thermostat.prototype.decrease_temp = function() {
 	{
 		this.current_temp -= 1;
 	}
+};
 
+Thermostat.prototype.reset = function() {
+	this.current_temp = 20;
+};
+
+Thermostat.prototype.set_energy_usage = function(temperature) {
+	switch(true)
+	{
+		case (temperature <= 18):
+			this.energy_usage = "Green";
+			break;
+		case ((temperature <= 25) && (temperature > 18)):
+			this.energy_usage = "Black";
+			break;
+		case (temperature > 25):
+			this.energy_usage = "Red";
+			break;
+		default:
+	}	
 };

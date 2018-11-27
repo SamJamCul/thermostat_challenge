@@ -43,7 +43,19 @@ describe("Thermostat", function() {
   	for(var i = 0; i < 13; i++) {
   		thermostat.increase_temp();
   	}
-  	
+
   	expect(thermostat.current_temp).toEqual(32);
+  });
+
+  it("Temperature can be reset to 20", function() {
+  	thermostat.increase_temp();
+  	thermostat.reset();
+  	expect(thermostat.current_temp).toEqual(20)
+  });
+
+  it("Energy usage is low if current_temp < 18", function(){
+  	thermostat.current_temp = 17;
+  	thermostat.set_energy_usage(thermostat.current_temp);
+  	expect(thermostat.energy_usage).toEqual("Green");
   });
 });
