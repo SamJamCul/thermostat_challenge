@@ -25,4 +25,25 @@ describe("Thermostat", function() {
   	}
   	expect(thermostat.current_temp).toEqual(10);
   });
+
+  it("responds power_saving_mode", function() {
+  	expect(thermostat.power_saving_mode).toEqual(true);
+  });
+
+  it("current_temp cannot be increased past 25 when power saving mode is on", function() {
+  	for(var i = 0; i < 6; i++) {
+  		thermostat.increase_temp();
+  	}
+  	expect(thermostat.current_temp).toEqual(25);
+  });
+
+  it("current_temp cannot be increased past 32 when power saving mode is off", function() {
+  	thermostat.power_saving_mode = false;
+  	
+  	for(var i = 0; i < 13; i++) {
+  		thermostat.increase_temp();
+  	}
+  	
+  	expect(thermostat.current_temp).toEqual(32);
+  });
 });
