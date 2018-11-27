@@ -58,4 +58,20 @@ describe("Thermostat", function() {
   	thermostat.set_energy_usage(thermostat.current_temp);
   	expect(thermostat.energy_usage).toEqual("Green");
   });
+
+  it("Energy usage is medium if current_temp <= 25 and > 18", function(){
+  	thermostat.set_energy_usage(thermostat.current_temp);
+  	expect(thermostat.energy_usage).toEqual("Black");
+  });
+
+  it("Energy usage is hight if current_temp > 25", function(){
+  	thermostat.current_temp = 26;
+  	thermostat.set_energy_usage(thermostat.current_temp);
+  	expect(thermostat.energy_usage).toEqual("Red");
+  });
+
+  it('Can toggle power_saving_mode', function(){
+  	thermostat.toggle_power_saving();
+  	expect(thermostat.power_saving_mode).toEqual(false);
+  });
 });

@@ -43,3 +43,7 @@ Thermostat.prototype.set_energy_usage = function(temperature) {
 		default:
 	}	
 };
+
+Thermostat.prototype.toggle_power_saving = function() {
+	this.power_saving_mode = !this.power_saving_mode;
+};
