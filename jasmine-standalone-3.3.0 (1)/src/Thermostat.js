@@ -15,6 +15,7 @@ Thermostat.prototype.increase_temp = function() {
 		 	this.current_temp += 1;
 		 }	
 	}
+	this.set_energy_usage(this.current_temp);
 };
 
 Thermostat.prototype.decrease_temp = function() {
@@ -22,10 +23,12 @@ Thermostat.prototype.decrease_temp = function() {
 	{
 		this.current_temp -= 1;
 	}
+	this.set_energy_usage(this.current_temp);
 };
 
 Thermostat.prototype.reset = function() {
 	this.current_temp = 20;
+	this.set_energy_usage(this.current_temp);
 };
 
 Thermostat.prototype.set_energy_usage = function(temperature) {
