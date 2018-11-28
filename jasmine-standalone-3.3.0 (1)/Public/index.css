@@ -9,3 +9,7 @@
 .high {
 	color: red;
 }
+
+img {
+	opacity: 0.0;
+}
