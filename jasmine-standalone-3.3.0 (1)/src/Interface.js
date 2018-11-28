@@ -8,7 +8,9 @@ $(document).ready(function() {
   }
 
   function updateTemperature() {
-  	$('#temperature').text(thermostat.current_temp + "\xB0C")
+  	$('#temperature').text(thermostat.current_temp + "\xB0C");
+  	thermostat.set_energy_usage(thermostat.current_temp);
+  	$('#temperature').attr('class', thermostat.energy_usage);
   }
 
   $('#temperature-up').click(function() {
