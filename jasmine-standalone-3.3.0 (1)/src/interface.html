@@ -9,23 +9,25 @@
     <link rel="stylesheet" type="text/css" href= "../Public/index.css" />
   </head>
   <body>
-    <section>
-      <h1 id="temperature"></h1>
-      <p>
-        <button id="temperature-up">+</button>
-        <button id="temperature-down">-</button>
-        <button id="temperature-reset">reset</button>
-        power saving mode is <button id="powersaving"></button>
-      </p>
-      <br />
-      <span>Outside temperature is <span id="outside-temp"></span></span>
-      <select id="current-city">
-    		<option value="london">London</option>
-    		<option value="new%20york">New York</option>
-    		<option value="paris">Paris</option>
-    		<option value="tokyo">Tokyo</option>
-  		</select>
-    </section>
+    <div class="container mt-5" style="width: 400px;">
+      <section class="p-3 mb-2 bg-primary text-white">
+        <h1 id="temperature"></h1>
+        <p>
+          <button id="temperature-up">+</button>
+          <button id="temperature-down">-</button>
+          <button id="temperature-reset">reset</button>
+          power saving mode is <button id="powersaving"></button>
+        </p>
+        <br />
+        <span>Outside temperature is <span id="outside-temp"></span></span>
+        <select id="current-city">
+      		<option value="london">London</option>
+      		<option value="new%20york">New York</option>
+      		<option value="paris">Paris</option>
+      		<option value="tokyo">Tokyo</option>
+    		</select>
+      </section>
+      </div>
     <div>
     	<img src="../Public/borrowed.gif">
     </div>
