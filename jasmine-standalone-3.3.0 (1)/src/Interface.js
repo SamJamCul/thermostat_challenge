@@ -1,10 +1,10 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
   $('#temperature').text(thermostat.current_temp + "\xB0C");
-  $('#powersaving').text(showName())
+  showName();
 
   function showName() {
-  	thermostat.power_saving_mode === true ? "on" : "off";
+  	$('#powersaving').text(thermostat.power_saving_mode === true ? "on" : "off");
   }
 
   function updateTemperature() {
@@ -21,13 +21,15 @@ $(document).ready(function() {
   	updateTemperature();
   })
 
-  $('#reset').click(function() {
+  $('#temperature-reset').click(function() {
   	thermostat.reset();
   	updateTemperature();
+    showName();
   })
 
-  $('#power-saving-status').click(function() {
+  $('#powersaving').click(function() {
   	thermostat.toggle_power_saving();
   	updateTemperature();
+    showName();
   })
 })

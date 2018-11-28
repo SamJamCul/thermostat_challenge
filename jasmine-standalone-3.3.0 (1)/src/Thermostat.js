@@ -13,7 +13,7 @@ Thermostat.prototype.increase_temp = function() {
 	else {
 		 if (this.current_temp < 32) {
 		 	this.current_temp += 1;
-		 }	
+		 }
 	}
 	this.set_energy_usage(this.current_temp);
 };
@@ -28,6 +28,7 @@ Thermostat.prototype.decrease_temp = function() {
 
 Thermostat.prototype.reset = function() {
 	this.current_temp = 20;
+	this.power_saving_mode = true;
 	this.set_energy_usage(this.current_temp);
 };
 
@@ -44,7 +45,7 @@ Thermostat.prototype.set_energy_usage = function(temperature) {
 			this.energy_usage = "Red";
 			break;
 		default:
-	}	
+	}
 };
 
 Thermostat.prototype.toggle_power_saving = function() {
