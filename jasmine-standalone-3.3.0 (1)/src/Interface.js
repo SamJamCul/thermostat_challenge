@@ -28,7 +28,10 @@ $(document).ready(function() {
   })
 
   $('#temperature-up').click(function() {
-  	thermostat.increase_temp();
+    if (thermostat.current_temp === 32) {
+      window.location.replace("https://en.unesco.org/themes/addressing-climate-change/climate-change-education-and-awareness");
+    }
+    thermostat.increase_temp();
   	updateTemperature();
   })
 
