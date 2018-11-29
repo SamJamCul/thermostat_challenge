@@ -1,24 +1,34 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
-  if(window.localStorage.temperature === undefined) {
-    window.localStorage.temperature = thermostat.current_temp;
-    window.localStorage.power_saving_mode = thermostat.power_saving_mode;
-  } else {
-    thermostat.current_temp = Number(window.localStorage.temperature);
-    thermostat.power_saving_mode = window.localStorage.power_saving_mode;
+  load();
+  function load() {
+    if(window.localStorage.thermostat === undefined) {
+       window.localStorage.setItem("thermostat", JSON.stringify(thermostat));
+    } else {
+       tempThermostat = JSON.parse(localStorage.getItem("thermostat"));
+       thermostat.current_temp = tempThermostat.current_temp;
+       thermostat.power_saving_mode = tempThermostat.power_saving_mode;
+    }
   }
+
+  function save() {
+     window.localStorage.setItem("thermostat", JSON.stringify(thermostat));
+  }
+
   $('#temperature').text(thermostat.current_temp + "\xB0C");
   showName();
   updateOutdoorTemp($('#current-city').val());
 
   function showName() {
   	$('#powersaving').text(thermostat.power_saving_mode === true ? "on" : "off");
+    save();
   }
 
   function updateTemperature() {
   	$('#temperature').text(thermostat.current_temp + "\xB0C");
   	thermostat.set_energy_usage(thermostat.current_temp);
   	$('#temperature').attr('class', thermostat.energy_usage);
+    save();
   }
 
   function updateOutdoorTemp(city) {
