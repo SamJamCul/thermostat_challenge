@@ -23,6 +23,14 @@ $(document).ready(function() {
     })
   }
 
+  function updateFireAnimation(current_temp) {
+  	var fire = document.getElementById("fire");
+  	if (current_temp > 25) {
+  	fire.style.opacity = parseFloat(fire.style.opacity) + 0.2;
+  	}
+  	console.log(fire.style.opacity);
+  }
+
   $('#current-city').change(function() {
   	updateOutdoorTemp($('#current-city').val());
   })
@@ -33,6 +41,7 @@ $(document).ready(function() {
     }
     thermostat.increase_temp();
   	updateTemperature();
+  	updateFireAnimation(thermostat.current_temp)
   })
 
   $('#temperature-down').click(function() {
